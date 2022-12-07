@@ -153,20 +153,52 @@ Web applications can use many different infrastructure setups. These are also ca
 #### **Client-Server**
 ---
 Web applications often adopt the client-server model. A server hosts the web application in a client-server model and distributes it to any clients trying to access it.
-![Client Server Model](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/client-server-model.jpg)
+
+![Client Server Model](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/intro_web_app/client-server-model.jpg)
+
+In this model, web applications have two types of components, those in the front end, which are usually interpreted and executed on the client-side (browser), and components in the back end, usually compiled, interpreted, and executed by the hosting server.
+
+When a client visits the web application's URL (web address, i.e., [https://www.acme.local](https://www.acme.local)), the server uses the main web application interface (*UI*). Once the user clicks on a button or requests a specific function, the browser sends an HTTP web request to the server, which interprets this request and performs the necessary task(s) to complete the request (i.e., logging the user in, adding an item to the shopping cart, browsing to another page, etc.). Once the server has the required data, it sends the result back to the client's browser, displaying the result in a human-readable way.
+
+However, even though most web applications utilize a client-server front-back end architecture, there are many design implementations.
 
 ---
 #### **One Server**
 ---
+In this architecture, the entire web application or even several web applications and their components, including the database, are hosted on a single server. Though this design is straightforward and easy to implement, it is also the riskiest design.
+
+<!-- Bild -->
+![One Server Architecture](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/intro_web_app/one-server-arch.jpg)
+
+If any web application hosted on this server is compromised in this architecture, then all web applications' data will be compromised. This design represents an "all eggs in one basket" approach since if any of the hosted web applications are vulnerable, the entire webserver becomes vulnerable.
+
+Furthermore, if the webserver goes down for any reason, all hosted web applications become entirely inaccessible until the issue is resolved.
 
 ---
 #### **Many Servers - One Databse**
 ---
+This model separates the database onto its own database server and allows the web applications' hosting server to access the database server to store and retrieve data. It can be seen as many-servers to one-database and one-server to one-database, as long as the database is separated on its own database server.
+
+<!-- Bild -->
+![Many Servers one DB Architecture](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/intro_web_app/many-server-one-db-arch.jpg)
+
+This model can allow several web applications to access a single database to have access to the same data without syncing the data between them. The web applications can be replicates of one main application (i.e., primary/backup), or they can be separate web applications that share common data.
+
+This model's main advantage (from a security point of view) is segmentation, where each of the main components of a web application is located and hosted separately. In case one webserver is compromised, other webservers are not directly affected. Similarly, if the database is compromised (i.e., through a SQL injection vulnerability), the web application itself is not directly affected. There are still access control measures that need to be implemented after asset segmentation, such as limiting web application access to only data needed to function as intended.
 
 ---
 #### **Many Servers - Many Databses**
 ---
+This model builds upon the Many Servers, One Database model. However, within the database server, each web application's data is hosted in a separate database. The web application can only access private data and only common data that is shared across web applications. It is also possible to host each web application's database on its separate database server.
 
+<!-- Bild -->
+![Many Servers Many DB Architecture](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/intro_web_app/many-server-many-db-arch.jpg)
+
+This design is also widely used for redundancy purposes, so if any web server or database goes offline, a backup will run in its place to reduce downtime as much as possible. Although this may be more difficult to implement and may require tools like [load balancers](https://en.wikipedia.org/wiki/Load_balancing_(computing)) to function appropriately, this architecture is one of the best choices in terms of security due to its proper access control measures and proper asset segmentation.
+
+Aside from these models, there are other web application models available such as [serverless](https://aws.amazon.com/lambda/serverless-architectures-learn-more) web applications or web applications that utilize [microservices](https://aws.amazon.com/microservices).
+
+---
 ## **Front End vs. Back End**
 ---
 Text
