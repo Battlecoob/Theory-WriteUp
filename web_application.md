@@ -29,11 +29,14 @@
     - [**URL Encoding**](#url-encoding)
     - [**HTML Usage**](#html-usage)
   - [**Cascading Sytyle Sheet (CSS)**](#cascading-sytyle-sheet-css)
-    - [**Example**](#example)
+    - [**CSS Example**](#css-example)
     - [**Syntax**](#syntax)
     - [**CSS Usage**](#css-usage)
-    - [**Frameworks**](#frameworks)
+    - [**CSS Frameworks**](#css-frameworks)
   - [**Javascript**](#javascript)
+    - [**JS Example**](#js-example)
+    - [**JS Usage**](#js-usage)
+    - [**JS Frameworks**](#js-frameworks)
 - [**Front End Vulnerabilities**](#front-end-vulnerabilities)
   - [**Sensitive Data Exposure**](#sensitive-data-exposure)
   - [**HTML Injection**](#html-injection)
@@ -499,7 +502,7 @@ This is also useful when we want to utilize front-end vulnerabilities (like *XSS
 [CSS (Cascading Style Sheets)](https://www.w3.org/Style/CSS/Overview.en.html) is the stylesheet language used alongside HTML to format and set the style of HTML elements. Like HTML, there are several versions of CSS, and each subsequent version introduces a new set of capabilities that can be used for formatting HTML elements. Browsers are updated alongside it to support these new features.
 
 ---
-### **Example**
+### **CSS Example**
 ---
 
 At a fundamental level, CSS is used to define the style of each class or type of HTML elements (i.e., `body` or `h1`), such that any element within that page would be represented as defined in the CSS file. This could include the font family, font size, background color, text color and alignment, and more.
@@ -546,7 +549,7 @@ This shows that even though HTML and CSS are among the most basic cornerstones o
 Furthermore, CSS can be used alongside other languages to implement their styles, like *XML* or within *SVG* items, and can also be used in modern mobile development platforms to design entire mobile application User Interfaces (UI).
 
 ---
-### **Frameworks**
+### **CSS Frameworks**
 ---
 
 Many may consider CSS to be difficult to develop. In contrast, others may argue that it is inefficient to manually set the style and design of all HTML elements in each web page. This is why many CSS frameworks have been introduced, which contain a collection of CSS style-sheets and designs, to make it much faster and easier to create beautiful HTML elements.
@@ -562,7 +565,71 @@ Furthermore, these frameworks are optimized for web application usage. They are 
 ---
 ## **Javascript**
 ---
-Text
+
+[JavaScript](https://en.wikipedia.org/wiki/JavaScript) is one of the most used languages in the world. It is mostly used for web development and mobile development. *JavaScript* is usually used on the front end of an application to be executed within a browser. Still, there are implementations of back end JavaScript used to develop entire web applications, like [NodeJS](https://nodejs.org/en/about/).
+
+While HTML and CSS are mainly in charge of how a web page looks, JavaScript is usually used to control any functionality that the front end web page requires. Without JavaScript, a web page would be mostly static and would not have much functionality or interactive elements.
+
+---
+### **JS Example**
+---
+
+Within the page source code, *JavaScript* code is loaded with the `<script>` tag, as follows:
+
+```html
+<script type="text/javascript">
+  // JavaScript code
+</script>
+```
+
+A web page can also load remote *JavaScript* code with `src` and the script's link, as follows:
+
+``` html
+<script src="./script.js"></script>
+```
+
+An example of basic use of *JavaScript* within a web page is the following:
+
+``` javascript
+document.getElementById("button1").innerHTML = "Changed Text!";
+```
+
+The above example changes the content of the `button1` HTML element. From here on, there are many more advanced uses of *JavaScript* on a web page. The following shows an example of what the above *JavaScript* code would do when linked to a button click:
+
+![Simple JS Button](Images/intro_web_app/js_vanilla_btn.png)
+
+As with HTML, there are many sites available online to experiment with *JavaScript*. One example is [JSFiddle](https://jsfiddle.net/) which can be used to test *JavaScript, CSS, and HTML* and save code snippets. *JavaScript* is an advanced language, and its syntax is not as simple as *HTML or CSS*.
+
+---
+### **JS Usage**
+---
+
+Most common web applications heavily rely on *JavaScript* to drive all needed functionality on the web page, like updating the web page view in real-time, dynamically updating content in real-time, accepting and processing user input, and many other potential functionalities.
+
+*JavaScript* is also used to automate complex processes and perform HTTP requests to interact with the back end components and send and retrieve data, through technologies like [Ajax](https://en.wikipedia.org/wiki/Ajax_(programming)).
+
+In addition to automation, *JavaScript* is also often used alongside *CSS*, as previously mentioned, to drive advanced animations that would not be possible with *CSS* alone. Whenever we visit an interactive and dynamic web page that uses many advanced and visually appealing animations, we are seeing the result of active *JavaScript* code running on our browser.
+
+All modern web browsers are equipped with *JavaScript* engines that can execute *JavaScript* code on the client-side without relying on the back end webserver to update the page. This makes using *JavaScript* a very fast way to achieve a large number of processes quickly.
+
+---
+### **JS Frameworks**
+---
+
+As web applications become more advanced, it may be inefficient to use pure *JavaScript* to develop an entire web application from scratch. This is why a host of *JavaScript* frameworks have been introduced to improve the experience of web application development.
+
+These platforms introduce libraries that make it very simple to re-create advanced functionalities, like user login and user registration, and they introduce new technologies based on existing ones, like the use of dynamically changing *HTML* code, instead of using static *HTML* code.
+
+These platforms either use *JavaScript* as their programming language or use an implementation of *JavaScript* that compiles its code into *JavaScript* code.
+
+Some of the most common front end *JavaScript* frameworks are:
+
+* [Angular](https://www.w3schools.com/angular/angular_intro.asp)
+* [React](https://www.w3schools.com/react/react_intro.asp)
+* [Vue](https://www.w3schools.com/whatis/whatis_vue.asp)
+* [jQuery](https://www.w3schools.com/jquery/)
+
+A listing and comparison of common *JavaScript* frameworks can be found [here](https://en.wikipedia.org/wiki/Comparison_of_JavaScript_frameworks).
 
 <!-- Front End Vulnerabilities -->
 # **Front End Vulnerabilities**
