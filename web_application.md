@@ -20,9 +20,19 @@
       - [**Serverless**](#serverless)
     - [**Architecture Security**](#architecture-security)
   - [**Front End vs. Back End**](#front-end-vs-back-end)
+    - [**Front End**](#front-end)
+    - [**Back End**](#back-end)
+    - [**Securing Front/Back End**](#securing-frontback-end)
 - [**Front End Components**](#front-end-components)
   - [**HTML**](#html)
+    - [**HTML Structure**](#html-structure)
+    - [**URL Encoding**](#url-encoding)
+    - [**HTML Usage**](#html-usage)
   - [**Cascading Sytyle Sheet (CSS)**](#cascading-sytyle-sheet-css)
+    - [**Example**](#example)
+    - [**Syntax**](#syntax)
+    - [**CSS Usage**](#css-usage)
+    - [**Frameworks**](#frameworks)
   - [**Javascript**](#javascript)
 - [**Front End Vulnerabilities**](#front-end-vulnerabilities)
   - [**Sensitive Data Exposure**](#sensitive-data-exposure)
@@ -278,19 +288,278 @@ Another example would be if we cannot find the database after exploiting a vulne
 ---
 ## **Front End vs. Back End**
 ---
-Text
+We may have heard the [terms](https://en.wikipedia.org/wiki/Front_end_and_back_end) *front end* and *back end* web development, or the term [Full Stack](https://www.w3schools.com/whatis/whatis_fullstack.asp) web development, which refers to both *front* and *back* end web development. These terms are becoming synonymous with web application development, as they comprise the majority of the web development cycle. However, these terms are very different from each other, as each refers to one side of the web application, and each function and communicate in different areas.
 
+---
+### **Front End**
+---
+The front end of a web application contains the user's components directly through their web browser (client-side). These components make up the source code of the web page we view when visiting a web application and usually include *HTML, CSS, and JavaScript*, which is then interpreted in real-time by our browsers.
+
+This includes everything that the user sees and interacts with, like the page's main elements such as the title and text [HTML](https://www.w3schools.com/html/html_intro.asp), the design and animation of all elements [CSS](https://www.w3schools.com/css/css_intro.asp), and what function each part of a page performs [JavaScript](https://www.w3schools.com/js/js_intro.asp).
+
+In modern web applications, front end components should adapt to any screen size and work within any browser on any device. This contrasts with back end components, which are usually written for a specific platform or operating system. If the front end of a web application is not well optimized, it may make the entire web application slow and unresponsive. In this case, some users may think that the hosting server, or their internet, is slow, while the issue lies entirely on the client-side at the user's browser. This is why the front end of a web application must be optimized for most platforms, devices (including mobile!), and screen sizes.
+
+Aside from frontend code development, the following are some of the other tasks related to front end web application development:
+
+* Visual Concept Web Design
+* User Interface (UI) design
+* User Experience (UX) design
+
+There are many sites available to us to practice front end coding. One example is [this one](https://html-css-js.com/). Here we can play around with the [editor](https://htmlg.com/html-editor/), typing and formatting text and seeing the resulting *HTML, CSS, and JavaScript* being generated for us. Copy/paste this VERY simple example into the right hand side of the editor:
+
+```html
+<p><strong>Welcome to Hack The Box Academy</strong><strong></strong></p>
+<p></p>
+<p><em>This is some italic text.</em></p>
+<p></p>
+<p><span style="color: #0000ff;">This is some blue text.</span></p>
+<p></p>
+<p></p>
+```
+
+Watch the simple HTML code render on the left. Play around with the formatting, headers, colors, etc., and watch the code change.
+
+---
+### **Back End**
+---
+The back end of a web application drives all of the core web application functionalities, all of which is executed at the back end server, which processes everything required for the web application to run correctly. It is the part we may never see or directly interact with, but a website is just a collection of static web pages without a back end.
+
+There are four main back end components for web applications:
+
+|       Component        | Description |
+| :--------------------: | :---------: |
+|    Back end Servers    |        The hardware and operating system that hosts all other components and are usually run on operating systems like *Linux, Windows,* or using *Containers*.     |
+|      Web Servers       |      Web servers handle HTTP requests and connections. Some examples are *Apache, NGINX, and IIS*.       |
+|       Databases        |      Databases (*DBs*) store and retrieve the web application data. Some examples of relational databases are *MySQL, MSSQL, Oracle, PostgreSQL*, while examples of non-relational databases include *NoSQL* and *MongoDB*.       |
+| Development Frameworks | Development Frameworks are used to develop the core Web Application. Some well-known frameworks include *PHP, C#, Java, Python, and NodeJS JavaScript*. |
+
+![Back-end Server](https://github.com/Battlecoob/Theory-WriteUp/blob/main/Images/intro_web_app/backend-server.jpg)
+
+It is also possible to host each component of the back end on its own isolated server, or in isolated containers, by utilizing services such as [Docker](https://www.docker.com/). Some parts of the web application, like the database, can be installed into a Docker container, with the main web application being installed into another Docker container, to keep each logically separated off with the hope that any vulnerabilities that may affect one (i.e., a web application vulnerability) the other container(s). It is also possible to separate each into its dedicated server, which can be more resource-intensive and time-consuming to maintain. Still, it depends on the business case and design/functionality of the web application in question.
+
+Some of the main jobs performed by back end components include:
+
+* Develop the main logic and services of the back end of the web application
+* Develop the main code and functionalities of the web application
+* Develop and maintain the back end database
+* Develop and implement libraries to be used by the web application
+* Implement technical/business needs for the web application
+* Implement the main [APIs](https://en.wikipedia.org/wiki/API) for front end component communications
+* Integrate remote servers and cloud services into the web application
+
+---
+### **Securing Front/Back End**
+---
+Even though in most cases, we will not have access to the back end code to analyze the individual functions and the structure of the code, it does not make the application invulnerable. It could still be exploited by various injection attacks, for example.
+
+Suppose we have a search function in a web application that mistakenly does not process our search queries correctly. In that case, we could use specific techniques to manipulate the queries in such a way that we gain unauthorized access to specific database data [SQL injections](https://www.w3schools.com/sql/sql_injection.asp) or even execute operating system commands via the web application, also known as [Command Injections](https://owasp.org/www-community/attacks/Command_Injection).
+
+We will later discuss how to secure each component used on the front and back ends. When we have full access to the source code of front end components, we can perform a code review to find vulnerabilities, which is part of what is referred to as [Whitebox Pentesting](https://en.wikipedia.org/wiki/White-box_testing).
+
+On the other hand, back end components' source code is stored on the back end server, so we do not have access to it by default, which forces us only to perform what is known as [Blackbox Pentesting](https://en.wikipedia.org/wiki/Black-box_testing). However, as we will see, some web applications are open source, meaning we likely have access to their source code. Furthermore, some vulnerabilities such as [Local File Inclusion](https://owasp.org/www-project-web-security-testing-guide/latest/4-Web_Application_Security_Testing/07-Input_Validation_Testing/11.1-Testing_for_Local_File_Inclusion) could allow us to obtain the source code from the back end server. With this source code in hand, we can then perform a code review on back end components to further understand how the application works, potentially find sensitive data in the source code (such as passwords), and even find vulnerabilities that would be difficult or impossible to find without access to the source code.
+
+*The top 20* most common mistakes web developers make that are essential for us as penetration testers are:
+
+1. Permitting Invalid Data to Enter the Database
+2. Focusing on the System as a Whole
+3. Establishing Personally Developed Security Methods
+4. Treating Security to be Your Last Step
+5. Developing Plain Text Password Storage
+6. Creating Weak Passwords
+7. Storing Unencrypted Data in the Database
+8. Depending Excessively on the Client Side
+9. Being Too Optimistic
+10. Permitting Variables via the URL Path Name
+11. Trusting third-party code
+12. Hard-coding backdoor accounts
+13. Unverified SQL injections
+14. Remote file inclusions
+15. Insecure data handling
+16. Failing to encrypt data properly
+17. Not using a secure cryptographic system
+18. Ignoring layer 8
+19. Review user actions
+20. Web Application Firewall misconfigurations
+
+These mistakes lead to the [OWASP Top 10](https://owasp.org/www-project-top-ten/) vulnerabilities for web applications, which we will discuss in other modules:
+
+1. Injection
+2. Broken Authentication
+3. Sensitive Data Exposure
+4. XML External Entities (XXE)
+5. Broken Access Control
+6. Security Misconfiguration
+7. Cross-Site Scripting (XSS)
+8. Insecure Deserialization
+9. Using Components with Known Vulnerabilities
+10. Insufficient Logging & Monitoring
+
+It is important to begin to familiarize ourselves with these flaws and vulnerabilities as they form the basis for many of the issues we cover in future web and even non-web related modules. As pentesters, we must have the ability to competently identify, exploit, and explain these vulnerabilities for our clients.
+
+---
 <!-- Front End Components -->
 # **Front End Components**
 
+
 ## **HTML**
 ---
-Text
+The first and most dominant component of the front end of web applications is [HTML (HyperText Markup Language)](https://en.wikipedia.org/wiki/HTML). HTML is at the very core of any web page we see on the internet. It contains each page's basic elements, including titles, forms, images, and many other elements. The web browser, in turn, interprets these elements and displays them to the end-user.
 
+The following is a very basic example of an HTML page:
+
+``` html
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <h1>A Heading</h1>
+        <p>A Paragraph</p>
+    </body>
+</html>
+```
+
+![Basic HTML page](Images/intro_web_app/basic_example_html.jpg)
+
+As we can see, HTML elements are displayed in a tree form, similar to *XML* and other languages:
+
+---
+### **HTML Structure**
+---
+
+```html
+document
+ - html
+   -- head
+      --- title
+   -- body
+      --- h1
+      --- p
+```
+
+Each element can contain other HTML elements, while the main *HTML* tag should contain all other elements within the page, which falls under *document*, distinguishing between *HTML* and documents written for other languages, such as *XML* documents.
+
+```html
+<p id='firstParagraph> This is a paragraph </p>
+```
+
+Each HTML element is opened and closed with a tag that specifies the element's type 'e.g. `<p>` for paragraphs', where the content would be placed between these tags. Tags may also hold the element's id or class 'e.g. `<p id='...'>`', which is needed for CSS to properly format the element. Both tags and the content comprise the entire element.
+
+---
+### **URL Encoding**
+---
+
+An important concept to learn in HTML is [URL Encoding](https://en.wikipedia.org/wiki/Percent-encoding), or percent-encoding. For a browser to properly display a page's contents, it has to know the charset in use. In URLs, for example, browsers can only use [ASCII](https://en.wikipedia.org/wiki/ASCII) encoding, which only allows alphanumerical characters and certain special characters. Therefore, all other characters outside of the ASCII character-set have to be encoded within a URL. URL encoding replaces unsafe ASCII characters with a % symbol followed by two hexadecimal digits.
+
+For example, the single-quote character ''' is encoded to '%27', which can be understood by browsers as a single-quote. URLs cannot have spaces in them and will replace a space with either a + (plus sign) or %20. Some common character encodings are:
+
+| Character | Encoding |
+| :-------: | :------: |
+|   space   |   %20    |
+|     !     |   %21    |
+|     "     |   %22    |
+|     #     |   %23    |
+|     $     |   %24    |
+|     %     |   %25    |
+|     &     |   %26    |
+|     '     |   %27    |
+|     (     |   %28    |
+|     )     |   %29    |
+
+A full character encoding table can be seen [here](https://www.w3schools.com/tags/ref_urlencode.ASP).
+
+Many online tools can be used to perform URL encoding/decoding. Furthermore, the popular web proxy [Burp Suite](https://portswigger.net/burp) has a decoder/encoder which can be used to convert between various types of encodings. Try encoding/decoding some characters and strings using this [online tool](https://www.url-encode-decode.com/).
+
+---
+### **HTML Usage**
+---
+
+The `<head>` element usually contains elements that are not directly printed on the page, like the page title, while all main page elements are located under `<body>`. Other important elements include the `<style>`, which holds the page's CSS code, and the `<script>`, which holds the JS code of the page, as we will see in the next section.
+
+Each of these elements is called a [DOM (Document Object Model)](https://en.wikipedia.org/wiki/Document_Object_Model). The [World Wide Web Consortium (W3C)](https://www.w3.org/) defines *DOM* as:
+
+>"The W3C Document Object Model (DOM) is a platform and language-neutral interface that allows programs and scripts to dynamically access and update the content, structure, and style of a document."
+
+The DOM standard is separated into 3 parts:
+
+* *Core DOM* - the standard model for all document types
+* *XML DOM* - the standard model for XML documents
+* *HTML DOM* - the standard model for HTML documents
+
+For example, from the above tree view, we can refer to DOMs as `document.head` or `document.h1`, and so on.
+
+Understanding the HTML DOM structure can help us understand where each element we view on the page is located, which enables us to view the source code of a specific element on the page and look for potential issues. We can locate HTML elements by their id, their tag name, or by their class name.
+
+This is also useful when we want to utilize front-end vulnerabilities (like *XSS*) to manipulate existing elements or create new elements to serve our needs.
+
+---
 ## **Cascading Sytyle Sheet (CSS)**
 ---
-Text
+[CSS (Cascading Style Sheets)](https://www.w3.org/Style/CSS/Overview.en.html) is the stylesheet language used alongside HTML to format and set the style of HTML elements. Like HTML, there are several versions of CSS, and each subsequent version introduces a new set of capabilities that can be used for formatting HTML elements. Browsers are updated alongside it to support these new features.
 
+---
+### **Example**
+---
+
+At a fundamental level, CSS is used to define the style of each class or type of HTML elements (i.e., `body` or `h1`), such that any element within that page would be represented as defined in the CSS file. This could include the font family, font size, background color, text color and alignment, and more.
+
+```css
+body {
+  background-color: black;
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+p {
+  font-family: helvetica;
+  font-size: 10px;
+}
+```
+
+As previously mentioned, this is why we may set unique IDs or class names for certain HTML elements so that we can later refer to them within CSS or JavaScript when needed.
+
+---
+### **Syntax**
+---
+
+CSS defines the style of each HTML element or class between curly brackets `{}`, within which the properties are defined with their values (i.e. `element { property : value; }`).
+
+Each HTML element has many properties that can be set through CSS, such as `height, position, border, margin, padding, color, text-align, font-size,` and hundreds of other properties. All of these can be combined and used to design visually appealing web pages.
+
+CSS can be used for advanced animations for a wide variety of uses, from moving items all the way to advanced 3D animations. Many CSS properties are available for animations, like `@keyframes, animation, animation-duration, animation-direction,` and many others. You can read about and try out many of these animation properties here.
+
+---
+### **CSS Usage**
+---
+
+CSS is often used alongside JavaScript to make quick calculations, dynamically adjust the style properties of certain HTML elements, or achieve advanced animations based on keystrokes or the mouse cursor location.
+
+
+The following example beautifully illustrates such capabilities of CSS when used with HTML and JavaScript "Parallax Depth Cards - by Andy Merskin on [CodePen](https://codepen.io/andymerskin/pen/XNMWvQ)"
+
+This shows that even though HTML and CSS are among the most basic cornerstones of web development when used properly, they can be used to build visually stunning web pages, which can make interacting with web applications a much easier and more user-friendly experience.
+
+Furthermore, CSS can be used alongside other languages to implement their styles, like *XML* or within *SVG* items, and can also be used in modern mobile development platforms to design entire mobile application User Interfaces (UI).
+
+---
+### **Frameworks**
+---
+
+Many may consider CSS to be difficult to develop. In contrast, others may argue that it is inefficient to manually set the style and design of all HTML elements in each web page. This is why many CSS frameworks have been introduced, which contain a collection of CSS style-sheets and designs, to make it much faster and easier to create beautiful HTML elements.
+
+Furthermore, these frameworks are optimized for web application usage. They are designed to be used with JavaScript and for wide use within a web application and contain elements usually required within modern web applications. Some of the most common CSS frameworks are:
+
+* [Bootstrap](https://www.w3schools.com/bootstrap4/)
+* [SASS](https://sass-lang.com/)
+* [Foundation](https://en.wikipedia.org/wiki/Foundation_(framework))
+* [Bulma](https://bulma.io/)
+* [Pure](https://purecss.io/)
+
+---
 ## **Javascript**
 ---
 Text
