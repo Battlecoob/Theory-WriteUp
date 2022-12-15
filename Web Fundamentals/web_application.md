@@ -60,6 +60,8 @@
     - [**Non-relational (NoSQL)**](#non-relational-nosql)
     - [**Use in Web Applications**](#use-in-web-applications)
   - [**Development Frameworks \& APIs**](#development-frameworks--apis)
+    - [**APIs**](#apis)
+    - [**Query Parameters**](#query-parameters)
 - [**Back End Vulnerabilities**](#back-end-vulnerabilities)
   - [**Common Web Vulnerablilties**](#common-web-vulnerablilties)
   - [**Public Vulnerabilities**](#public-vulnerabilities)
@@ -1098,7 +1100,40 @@ This basic example shows us how easy it is to utilize databases. However, if not
 ---
 ## **Development Frameworks & APIs**
 ---
-Text
+In addition to web servers that can host web applications in various languages, there are many common web development frameworks that help in developing core web application files and functionality. With the increased complexity of web applications, it may be challenging to create a modern and sophisticated web application from scratch. Hence, most of the popular web applications are developed using web frameworks.
+
+As most web applications share common functionality -such as user registration-, web development frameworks make it easy to quickly implement this functionality and link them to the front end components, making a fully functional web application. Some of the most common web development frameworks include:
+
+* [Laravel](https://laravel.com/) (*PHP*): usually used by startups and smaller companies, as it is powerful yet easy to develop for.
+* [Express](https://expressjs.com/) (*Node.JS*): used by PayPal, Yahoo, Uber, IBM, and MySpace.
+* [Django](https://www.djangoproject.com/) (*Python*): used by Google, YouTube, Instagram, Mozilla, and Pinterest.
+* [Rails](https://rubyonrails.org/) (*Ruby*): used by GitHub, Hulu, Twitch, Airbnb, and even Twitter in the past.
+  
+>It must be noted that popular websites usually utilize a variety of frameworks and web servers, rather than just one.
+
+---
+### **APIs**
+---
+An important aspect of back end web application development is the use of Web [APIs](https://en.wikipedia.org/wiki/API) and HTTP Request parameters to connect the front end and the back end to be able to send data back and forth between front end and back end components and carry out various functions within the web application.
+
+For the front end component to interact with the back end and ask for certain tasks to be carried out, they utilize them to ask the back end component for a specific task with specific input. The back end components process these requests, perform the necessary functions, and return a certain response to the front end components, which finally renderers the end user's output on the client-side.
+
+---
+### **Query Parameters**
+---
+The default method of sending specific arguments to a web page is through *GET* and *POST* request parameters. This allows the front end components to specify values for certain parameters used within the page for the back end components to process them and respond accordingly.
+
+For example, a */search.php* page would take an *item* parameter, which may be used to specify the search item. Passing a parameter through a *GET* request is done through the URL '*/search.php?item=apples*', while *POST* parameters are passed through *POST* data at the bottom of the *POST HTTP* request:
+
+```http
+POST /search.php HTTP/1.1
+...SNIP...
+
+item=apples
+```
+
+Query parameters allow a single page to receive various types of input, each of which can be processed differently. For certain other scenarios, Web APIs may be much quicker and more efficient to use. Our theory write up about [web requests]()
+The Web Requests module takes a deeper dive into HTTP requests.
 
 ---
 <!-- Back End Vulnerabilities -->
