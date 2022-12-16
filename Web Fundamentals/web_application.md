@@ -45,7 +45,7 @@
     - [**HTML Injection Example**](#html-injection-example)
   - [**Cross-Site Scripting (XSS)**](#cross-site-scripting-xss)
   - [**Cross-Site Request Forgery (CSRF)**](#cross-site-request-forgery-csrf)
-  - [**CSRF Prevention**](#csrf-prevention)
+    - [**CSRF Prevention**](#csrf-prevention)
 - [**Back End Components**](#back-end-components)
   - [**Back End Servers**](#back-end-servers)
     - [**Software**](#software)
@@ -815,7 +815,7 @@ A common *CSRF* attack to gain higher privileged access to a web application is 
 The *exploit.js* file would contain the malicious *JavaScript* code that changes the user's password. Developing the *exploit.js* in this case requires knowledge of this web application's password changing procedure and *APIs*. The attacker would need to create *JavaScript* code that would replicate the desired functionality and automatically carry it out (i.e., *JavaScript* code that changes our password for this specific web application).
 
 ---
-## **CSRF Prevention**
+### **CSRF Prevention**
 ---
 Though there should be measures on the back end to detect and filter user input, it is also always important to filter and sanitize user input on the front end before it reaches the back end, and especially if this code may be displayed directly on the client-side without communicating with the back end. Two main controls must be applied when accepting user input:
 
