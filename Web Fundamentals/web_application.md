@@ -449,7 +449,7 @@ The following is a very basic example of an HTML page:
 </html>
 ```
 
-![Basic HTML page](Images/intro_web_app/basic_example_html.jpg)
+![Basic HTML page](../Images/intro_web_app/basic_example_html.jpg)
 
 As we can see, HTML elements are displayed in a tree form, similar to *XML* and other languages:
 
@@ -622,7 +622,7 @@ document.getElementById("button1").innerHTML = "Changed Text!";
 
 The above example changes the content of the `button1` HTML element. From here on, there are many more advanced uses of *JavaScript* on a web page. The following shows an example of what the above *JavaScript* code would do when linked to a button click:
 
-![Simple JS Button](Images/intro_web_app/js_vanilla_btn.png)
+![Simple JS Button](../Images/intro_web_app/js_vanilla_btn.png)
 
 As with HTML, there are many sites available online to experiment with *JavaScript*. One example is [JSFiddle](https://jsfiddle.net/) which can be used to test *JavaScript, CSS, and HTML* and save code snippets. *JavaScript* is an advanced language, and its syntax is not as simple as *HTML or CSS*.
 
@@ -668,7 +668,7 @@ Although the majority of web application penetration testing is focused on back 
 
 [Sensitive Data Exposure](https://owasp.org/www-project-top-ten/2017/A3_2017-Sensitive_Data_Exposure) refers to the availability of sensitive data in clear-text to the end-user. This is usually found in the *source code* of the web page or page source on the front end of web applications. This is the HTML source code of the application, not to be confused with the back end code that is typically only accessible on the server itself. We can view any website's page source in our browser by right-clicking anywhere on the page and selecting *View Page Source* from the pop-up menu. Sometimes a developer may disable right-clicking on a web application, but this does not prevent us from viewing the page source as we can merely type `ctrl + u` or view the page source through a web proxy such as *Burp Suite*. Let's take a look at the google.com page source. Right-click and choose *View Page Source*, and a new tab will open in our browser with the URL [view-source:https://www.google.com/](https://www.google.com/). Here we can see the *HTML, JavaScript*, and external links. Take a moment to browse the page source a bit.
 
-![Google Page Source](Images/intro_web_app/view_source_google.png)
+![Google Page Source](../Images/intro_web_app/view_source_google.png)
 
 Sometimes we may find login *credentials, hashes*, or other sensitive data hidden in the comments of a web page's source code or within external *JavaScript* code being imported. Other sensitive information may include exposed links or directories or even exposed user information, all of which can potentially be leveraged to further our access within the web application or even the web application's supporting infrastructure (webserver, database server, etc.).
 
@@ -679,7 +679,7 @@ For this reason, one of the first things we should do when assessing a web appli
 ---
 At first glance, this login form does not look like anything out of the ordinary:
 
-![simple login](Images/intro_web_app/web_apps_login_form_.png)
+![simple login](../Images/intro_web_app/web_apps_login_form_.png)
 
 Let's take a look at at the page source:
 
@@ -737,7 +737,7 @@ Another example of *HTML Injection* is web page defacing. This consists of injec
 ---
 The following example is a very basic web page with a single button "Click to enter your name." When we click on the button, it prompts us to input our name and then displays our name as "Your name is ...":
 
-![HTML injection](Images/intro_web_app/web_apps_html_injection_5.jpg)
+![HTML injection](../Images/intro_web_app/web_apps_html_injection_5.jpg)
 
 If no input sanitization is in place, this is potentially an easy target for HTML Injection and Cross-Site Scripting (XSS) attacks. We take a look at the page source code and see no input sanitization in place whatsoever, as the page takes user input and directly displays it:
 
@@ -770,7 +770,7 @@ To test for HTML Injection, we can simply input a small snippet of HTML code as 
 ```
 
 Once we input it, we see that the web page's background image changes instantly:
-![HTML injection](Images/intro_web_app/web_apps_html_injection_6.jpg)
+![HTML injection](../Images/intro_web_app/web_apps_html_injection_6.jpg)
 
 >In this example, as everything is being carried out on the front end, refreshing the web page would reset everything back to normal.
 
@@ -793,7 +793,7 @@ In the example we saw for *HTML Injection*, there was no input sanitization what
 
 Once we input our payload and hit ok, we see that an alert window pops up with the cookie value in it:
 
-![XSS Example](Images/intro_web_app/web_apps_xss_2.jpg)
+![XSS Example](../Images/intro_web_app/web_apps_xss_2.jpg)
 
 This payload is accessing the *HTML* document tree and retrieving the *cookie* object's value. When the browser processes our input, it will be considered a new *DOM*, and our *JavaScript* will be executed, displaying the cookie value back to us in a popup.
 
@@ -849,7 +849,7 @@ The back end server contains the other 3 back end components:
 * Database
 * Development Framework
 
-![Back-end Server](Images/intro_web_app/backend-server.jpg)
+![Back-end Server](../Images/intro_web_app/backend-server.jpg)
 
 Other software components on the back end server may include [hypervisors](https://en.wikipedia.org/wiki/Hypervisor), containers, and WAFs.
 
@@ -880,7 +880,7 @@ A [web server](https://en.wikipedia.org/wiki/Web_server) is an application that 
 ---
 A typical web server accepts HTTP requests from the client-side, and responds with different HTTP responses and codes, like a code `200 OK` response for a successful request, a code `404 NOT FOUND` when requesting pages that do not exist, code `403 FORBIDDEN` for requesting access to restricted pages, and so on.
 
-![Web Server](Images/intro_web_app/web-server-requests.jpg)
+![Web Server](../Images/intro_web_app/web-server-requests.jpg)
 
 The following are some of the most common [HTTP response codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status):
 
@@ -934,7 +934,7 @@ Many web server types can be utilized to run web applications. Most of these can
 ---
 ### **Apache**
 ---
-![Apache](Images/intro_web_app/apache.png)
+![Apache](../Images/intro_web_app/apache.png)
 
 [Apache](https://www.apache.org/) 'or *httpd*' is the most common web server on the internet, hosting more than 40% of all internet websites. *Apache* usually comes pre-installed in most *Linux* distributions and can also be installed on Windows and macOS servers.
 
@@ -949,7 +949,7 @@ Many web server types can be utilized to run web applications. Most of these can
 ---
 ### **NGINX**
 ---
-![NGINX](Images/intro_web_app/nginx.png)
+![NGINX](../Images/intro_web_app/nginx.png)
 
 [NGINX](https://www.nginx.com/) is the second most common web server on the internet, hosting roughly 30% of all internet websites. *NGINX* focuses on serving many concurrent web requests with relatively low memory and CPU load by utilizing an async architecture to do so. This makes *NGINX* a very reliable web server for popular web applications and top businesses worldwide, which is why it is the most popular web server among high traffic websites, with around 60% of the top 100,000 websites using *NGINX*.
 
@@ -966,7 +966,7 @@ Many web server types can be utilized to run web applications. Most of these can
 ---
 ### **IIS**
 ---
-![IIS](Images/intro_web_app/iis.png)
+![IIS](../Images/intro_web_app/iis.png)
 
 [IIS (Internet Information Services)](https://en.wikipedia.org/wiki/Internet_Information_Services) is the third most common web server on the internet, hosting around 15% of all internet web sites. *IIS* is developed and maintained by Microsoft and mainly runs on Microsoft Windows Servers. *IIS* is usually used to host web applications developed for the Microsoft .NET framework, but can also be used to host web applications developed in other languages like *PHP*, or host other types of services like *FTP*. Furthermore, *IIS* is very well optimized for Active Directory integration and includes features like *Windows Auth* for authenticating users using Active Directory, allowing them to automatically sign in to web applications.
 
@@ -994,7 +994,7 @@ There are many different types of databases, each of which fits a certain type o
 
 For example, we can have a `users` table in a relational database containing columns like `id, username, first_name, last_name`, and so on. The `id` can be used as the table key. Another table, `posts`, may contain posts made by all users, with columns like `id, user_id, date, content`, and so on.
 
-![Relation DB](Images/intro_web_app/web_apps_relational_db.jpg)
+![Relation DB](../Images/intro_web_app/web_apps_relational_db.jpg)
 
 We can link the `id` from the `users` table to the `user_id` in the `posts` table to easily retrieve the user details for each post, without having to store all user details with each post.
 
@@ -1031,7 +1031,7 @@ There are 4 common storage models for *NoSQL* databases:
 
 Each of the above models has a different way of storing data. For example, the *Key-Value* model usually stores data in *JSON* or, and has a key for each pair, storing all of its data as its value:
 
-![Non-realtional DB](Images/intro_web_app/web_apps_non-relational_db.jpg)
+![Non-realtional DB](../Images/intro_web_app/web_apps_non-relational_db.jpg)
 
 ```json
 {
